@@ -10,7 +10,7 @@ const SignInPage = (props) => {
     return (
         <Container>
             <ContainerItem full column center>
-                <Header>Login Your Account</Header>
+                <Header mb="20px">Login to your account</Header>
                 <Input placeholder={"Username"} type="text" />
                 <Input placeholder={"First Name"} type="text" />
                 <Input placeholder={"Last Name"} type="text" />

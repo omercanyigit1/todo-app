@@ -5,10 +5,6 @@ const initialState = {
     loading: false,
     error: null,
     list: [],
-    total: 0,
-    count: 0,
-    limit: 0,
-    offset: 0
 };
 
 //this is the list reducer.
@@ -25,11 +21,6 @@ const ListReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: null,
-                list: action.payload.results,
-                total: action.payload.total,
-                count: action.payload.count,
-                limit: action.payload.limit,
-                offset: action.payload.offset
             };
         case FETCH_LIST_FAILED:
             return {
