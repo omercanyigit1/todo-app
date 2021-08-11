@@ -9,6 +9,8 @@ export const Button = styled.button`
   height: 45px;
   text-align: center;
   cursor: pointer;
+  text-transform: uppercase;
+  width: 100%;
 
   ${props => props.primary && css`
     background: #0062FF;

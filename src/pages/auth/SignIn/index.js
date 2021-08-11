@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Input} from "../../../components/styled";
+import {Button, Input, Header, Container, ContainerItem} from "../../../components/styled";
 
 const SignInPage = (props) => {
 
@@ -8,11 +8,15 @@ const SignInPage = (props) => {
     }
 
     return (
-        <div>
-            <Input placeholder={"type your name"} type="text" />
-            <Button primary>Primary Button</Button>
-            <Button secondary>Secondary Button</Button>
-        </div>
+        <Container>
+            <ContainerItem full column center>
+                <Header>Login Your Account</Header>
+                <Input placeholder={"Username"} type="text" />
+                <Input placeholder={"First Name"} type="text" />
+                <Input placeholder={"Last Name"} type="text" />
+                <Button primary>Login</Button>
+            </ContainerItem>
+        </Container>
     );
 };
 
