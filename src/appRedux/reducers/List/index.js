@@ -69,7 +69,6 @@ const ListReducer = (state = initialState, action) => {
                 error: null,
             };
         case UPDATE_TASK_SUCCESS: {
-            const newTasks = _.extend({}, state.tasks, action.payload)
 
             return {
                 ...state,
@@ -101,7 +100,7 @@ const ListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: `code: ${action.payload.code} \n message: ${action.payload.message}`
+                error: `message: ${action.payload.message}`
             }
         default:
             return state;

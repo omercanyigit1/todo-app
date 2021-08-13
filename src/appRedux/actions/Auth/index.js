@@ -6,7 +6,6 @@ import {
     SIGN_OUT_SUCCESS,
     SIGN_OUT_FAILED,
 } from "../../../constants/ActionTypes";
-import firebase from "../../../constants/firebase";
 
 //this is the request function to start redux state
 export const postSignInRequest = () => ({
@@ -41,22 +40,31 @@ export const postSignOutSuccess = () => ({
     type: SIGN_OUT_SUCCESS,
 });
 
-export const postSignIn = (credentials) => {
-    let data = {
-        username: credentials.username,
-        name: credentials.name,
-        lastname: credentials.lastname,
-    }
+export const postSignIn = (data) => {
+    localStorage.setItem('username', data.username);
 
-    return (dispatch) => {
+    return (dispatch, getState, {getFirebase}) => {
+        const firebase = getFirebase();
+        console.log(firebase);
+
         dispatch(postSignInRequest());
-
-    }
+        firebase.auth().signInAnonymously().then(() => {
+            dispatch(postSignInSuccess());
+        }).catch(err => {
+            dispatch(postSignInFailed(err));
+        });
+    };
 };
 
 export const postSignOut = () => {
-    return (dispatch) => {
+    localStorage.removeItem('username');
+    return (dispatch, getState, {getFirebase}) => {
+        const firebase = getFirebase();
         dispatch(postSignOutRequest());
-
-    }
+        firebase.auth().signOut().then(() => {
+            dispatch(postSignOutSuccess());
+        }).catch(err => {
+            dispatch(postSignInFailed(err));
+        });
+    };
 }

@@ -9,6 +9,6 @@ export const TaskStyle = styled.div `
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 24px 24px 14px 24px;
+    padding: 20px 24px 4px 24px;
     color: #171725;
 `;

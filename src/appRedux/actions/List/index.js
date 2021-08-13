@@ -85,17 +85,21 @@ export const fetchTask = () => {
     let tasks = [];
 
     return (dispatch, getState, {getFirebase}) => {
+        const authorId = getState().firebase.auth.uid;
         const firestore = getFirebase().firestore();
         dispatch(fetchTaskRequest());
         firestore.collection("tasks").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
+                let taskAuthorId = doc.data().authorId;
 
                 let task = {
                     id: doc.id,
                     ...doc.data()
                 }
 
-                tasks.push(task);
+                if(taskAuthorId === authorId) {
+                    tasks.push(task);
+                }
             });
             dispatch(fetchTaskSuccess(tasks));
         }).catch((err) => {
@@ -109,12 +113,14 @@ export const addTask = (task) => {
     return (dispatch, getState, {getFirebase}) => {
         const firestore = getFirebase().firestore();
         const authorId = getState().firebase.auth.uid;
+        const authorName = localStorage.getItem('username');
         dispatch(addTaskRequest());
 
         //we create a task with fields
         let taskObj = {
             task: task,
             authorId: authorId,
+            authorName: authorName,
             date: new Date()
         }
 

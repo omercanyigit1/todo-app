@@ -10,9 +10,8 @@ export const ContainerItem = styled.div `
     ${width}
     ${space}
     margin: 0 auto;
-    , width
     ${props => props.full && css`
-    height: 100vh;
+        height: 100vh;
     `}
     ${props => props.center && css`
     align-items: center;

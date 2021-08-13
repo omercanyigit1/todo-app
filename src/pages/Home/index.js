@@ -16,7 +16,6 @@ import {addTask, removeTask, fetchTask, updateTask} from "../../appRedux/actions
 const HomePage = (props) => {
     const [value, setValue] = useState('');
     const [editTask, setEditTask] = useState('');
-    const [isEdit, setIsEdit] = useState(false);
     const {loading, error, tasks, addTask, fetchTask, removeTask, updateTask} = props;
 
     useEffect(() => {
@@ -29,8 +28,11 @@ const HomePage = (props) => {
         }
     }
 
-    function handleEditTask(item, value) {
-        updateTask(item, value);
+    function handleEditTask(item, value, e) {
+        if (e.key === 'Enter') {
+            updateTask(item, value);
+            e.target.removeAttribute('readonly');
+        }
     }
 
     function handleRemoveTask(item) {
@@ -45,6 +47,11 @@ const HomePage = (props) => {
         setEditTask(e.target.value);
     }
 
+    function handleEditVisible(e) {
+        e.preventDefault();
+        e.target.removeAttribute('readonly');
+    }
+
     return (
         <Container>
             <SignedNavbar/>
@@ -57,12 +64,14 @@ const HomePage = (props) => {
                 {tasks.length < 1 && <TextPurple>:( <br/> There is no task yet!</TextPurple>}
                 {!loading && tasks && tasks.map((item, index) => {
                     return (
-                        <TaskStyle key={`list-item-${item.id}`}>
-                            <Input placeholder={"Type a task and press Enter to add"} defaultValue={item.task}
+                        <TaskStyle key={`list-item-${item.id}-${index}`}>
+                            <Input className={`list-item-${item.id}`} readOnly="readonly"
+                                   placeholder={"Type a task and press Enter to add"} defaultValue={item.task}
+                                   onClick={(e) => {
+                                       handleEditVisible(e);
+                                   }}
                                    onKeyPress={(e) => {
-                                       if(e.key === 'Enter') {
-                                           handleEditTask(item, editTask)
-                                       }
+                                       handleEditTask(item, editTask, e);
                                    }}
                                    onChange={handleOnChangeTask}
                             />

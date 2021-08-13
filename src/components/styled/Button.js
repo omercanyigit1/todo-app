@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { width, space } from 'styled-system'
 
 export const Button = styled.button`
   background: transparent;
@@ -14,7 +15,7 @@ export const Button = styled.button`
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-
+  ${width}
   ${props => props.primary && css`
     background: #0062FF;
     border: 2px solid #0062FF;

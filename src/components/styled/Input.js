@@ -19,4 +19,12 @@ export const Input = styled.input`
      &::-webkit-input-placeholder {
         color: #92929D;
     }
+    &:read-only {
+        background-color: transparent;
+    }
+    
+    &:read-only:hover {
+        background-color: #FCFCFC;
+        cursor: pointer;
+    }
 `;
