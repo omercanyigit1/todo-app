@@ -13,7 +13,7 @@ const SignedNavbar = (props) => {
     function handleClick(e) {
         e.preventDefault();
         postSignOut();
-        history.push('/signin');
+        history.push('/signin')
     }
 
     return (

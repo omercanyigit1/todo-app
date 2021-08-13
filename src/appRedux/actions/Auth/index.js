@@ -45,10 +45,9 @@ export const postSignIn = (data) => {
 
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase();
-        console.log(firebase);
 
         dispatch(postSignInRequest());
-        firebase.auth().signInAnonymously().then(() => {
+        firebase.auth().signInAnonymously().then((response) => {
             dispatch(postSignInSuccess());
         }).catch(err => {
             dispatch(postSignInFailed(err));

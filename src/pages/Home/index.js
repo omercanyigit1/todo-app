@@ -52,6 +52,16 @@ const HomePage = (props) => {
         e.target.removeAttribute('readonly');
     }
 
+    if(loading) {
+        return (
+            <Container>
+                <ContainerItem width={"620px"} mb={"50px"} full column center>
+                    <p>Loading...</p>
+                </ContainerItem>
+            </Container>
+        )
+    }
+
     return (
         <Container>
             <SignedNavbar/>

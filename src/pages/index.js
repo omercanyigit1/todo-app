@@ -1,25 +1,16 @@
-import React, {useEffect} from "react";
-import {Switch, Route, useHistory} from "react-router-dom";
-import {connect, useSelector} from "react-redux";
-import HomePage from "./Home";
-import SignInPage from "./auth/SignIn";
+import React from "react";
+import {Switch, Route} from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
+import asyncComponent from "../utils/asyncComponent";
 
-const Pages = (props) => {
-
+const Pages = () => {
     return (
         <Switch>
-            <Route path={`/signin`} component={SignInPage} />
-            <PrivateRoute path='/' exact component={HomePage}/>
+            <Route path={`/signin`} component={asyncComponent(() => import('./auth/SignIn'))} />
+            <PrivateRoute path='/' exact component={asyncComponent(() => import('./Home'))} />
         </Switch>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        isEmpty: state.firebase.auth.isEmpty
-    }
-}
 
-
-export default connect(mapStateToProps, {})(Pages);
+export default Pages;
