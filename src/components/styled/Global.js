@@ -8,4 +8,12 @@ export const Global = createGlobalStyle`
   body {
     font-family: 'Poppins', sans-serif;
   }
+  
+  ul {
+    padding: 0;
+  }
+  
+  ul > li {
+    list-style-type: none;
+  }
 `

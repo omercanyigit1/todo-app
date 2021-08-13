@@ -1,9 +1,15 @@
-export const API_URL = 'https://gateway.marvel.com/v1/public';
-
 export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_FAILED = 'SIGN_IN_FAILED';
 
-export const FETCH_LIST_REQUEST = 'FETCH_LIST_REQUEST';
-export const FETCH_LIST_SUCCESS = 'FETCH_LIST_SUCCESS';
-export const FETCH_LIST_FAILED = 'FETCH_LIST_FAILED';
+export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+export const SIGN_OUT_FAILED = 'SIGN_OUT_FAILED';
+
+export const ADD_TASK_REQUEST = 'ADD_TASK_REQUEST';
+export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
+export const ADD_TASK_FAILED = 'ADD_TASK_FAILED';
+
+export const REMOVE_TASK_REQUEST = 'REMOVE_TASK_REQUEST';
+export const REMOVE_TASK_SUCCESS = 'REMOVE_TASK_SUCCESS';
+export const REMOVE_TASK_FAILED = 'REMOVE_TASK_FAILED';

@@ -2,33 +2,61 @@ import {
     SIGN_IN_REQUEST,
     SIGN_IN_SUCCESS,
     SIGN_IN_FAILED,
-    API_URL, FETCH_LIST_REQUEST, FETCH_LIST_FAILED, FETCH_LIST_SUCCESS
+    SIGN_OUT_REQUEST,
+    SIGN_OUT_SUCCESS,
+    SIGN_OUT_FAILED,
 } from "../../../constants/ActionTypes";
-import axios from "axios";
-import {getListRequest} from "../List";
+import firebase from "../../../constants/firebase";
 
 //this is the request function to start redux state
 export const postSignInRequest = () => ({
-    type: FETCH_LIST_REQUEST
+    type: SIGN_IN_REQUEST
 });
 
 //this is the failed function if the response has any error
 export const postSignInFailed = error => ({
-    type: FETCH_LIST_FAILED,
+    type: SIGN_IN_FAILED,
     payload: error
 });
 
 //this is the success function if the response status 200 and result has value.
 export const postSignInSuccess = data => ({
-    type: FETCH_LIST_SUCCESS,
+    type: SIGN_IN_SUCCESS,
     payload: data
 });
 
-export const postSignIn = (value, offset, query) => {
+//this is the request function to start redux state
+export const postSignOutRequest = () => ({
+    type: SIGN_OUT_REQUEST
+});
 
-    return dispatch => {
+//this is the failed function if the response has any error
+export const postSignOutFailed = error => ({
+    type: SIGN_OUT_FAILED,
+    payload: error
+});
+
+//this is the success function if the response status 200 and result has value.
+export const postSignOutSuccess = () => ({
+    type: SIGN_OUT_SUCCESS,
+});
+
+export const postSignIn = (credentials) => {
+    let data = {
+        username: credentials.username,
+        name: credentials.name,
+        lastname: credentials.lastname,
+    }
+
+    return (dispatch) => {
         dispatch(postSignInRequest());
 
     }
 };
 
+export const postSignOut = () => {
+    return (dispatch) => {
+        dispatch(postSignOutRequest());
+
+    }
+}

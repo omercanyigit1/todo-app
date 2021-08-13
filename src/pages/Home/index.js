@@ -1,22 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
+import SignedNavbar from "../../components/SignedNavbar";
 
 const HomePage = (props) => {
 
     return (
        <div>
-           ddd
+           <SignedNavbar />
        </div>
    )
 };
 
-const mapStateToProps = (state) => {
-    return {
-        loading: state.list.loading,
-        error: state.list.error,
-        list: state.list.list,
-        limit: state.list.limit
-    }
-}
-
-export default connect(mapStateToProps, {})(HomePage);
+export default connect(null, {})(HomePage);

@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+import "firebase/firestore";
+import "firebase/auth";
 
 var firebaseConfig = {
     apiKey: "AIzaSyBNZdIUQ3B-b-1mx3Rq_UXQUXxg_JdDyqk",
@@ -9,10 +11,10 @@ var firebaseConfig = {
     appId: "1:567719159921:web:0ac74584398558633f93d0",
     measurementId: "G-7DWRCRQ84X"
 };
+
 // Initialize Firebase
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true });
 
-const auth = firebase.auth();
-const provider = auth.signInAnonymously();
-
-export {auth, provider};
+export default firebase;

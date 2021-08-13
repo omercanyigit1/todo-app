@@ -1,33 +1,50 @@
-import {FETCH_LIST_REQUEST, FETCH_LIST_SUCCESS, FETCH_LIST_FAILED} from "../../../constants/ActionTypes";
+import {
+    ADD_TASK_REQUEST,
+    ADD_TASK_SUCCESS,
+    ADD_TASK_FAILED,
+    REMOVE_TASK_REQUEST,
+    REMOVE_TASK_SUCCESS,
+    REMOVE_TASK_FAILED,
+} from "../../../constants/ActionTypes";
 
-//this is the initial state which is the redux states called.
 const initialState = {
     loading: false,
     error: null,
-    list: [],
+    tasks: []
 };
 
-//this is the list reducer.
-const ListReducer = (state = initialState, action) => {
+const ListReducer = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_LIST_REQUEST:
+        case ADD_TASK_REQUEST:
             return {
                 ...state,
                 loading: true,
                 error: null,
             };
-        case FETCH_LIST_SUCCESS:
+        case ADD_TASK_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 error: null,
-            };
-        case FETCH_LIST_FAILED:
+            }
+        case ADD_TASK_FAILED:
             return {
                 ...state,
                 loading: false,
                 error: action.payload
+            }
+        case REMOVE_TASK_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                error: null,
             };
+        case REMOVE_TASK_SUCCESS: {
+            return state;
+        }
+        case REMOVE_TASK_FAILED: {
+            return state;
+        }
         default:
             return state;
     }
