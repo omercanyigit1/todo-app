@@ -8,6 +8,7 @@ export const Navbar = styled.div `
     height: 77px;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 50px;
 `;
 
 export const  NavbarRightItem = styled.div `

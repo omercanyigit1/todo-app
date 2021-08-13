@@ -5,7 +5,7 @@ import ListReducer from "./List";
 import AuthReducer from "./Auth";
 
 //i combined the reducers here. I added the router because i always want to detect the router.
-const RootReducer = () => combineReducers({
+const RootReducer = combineReducers({
     auth: AuthReducer,
     list: ListReducer,
     firebase: firebaseReducer,

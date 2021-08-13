@@ -8,14 +8,15 @@ import {applyMiddleware, compose, createStore} from 'redux'
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {getFirebase, ReactReduxFirebaseProvider} from "react-redux-firebase";
-import RootReducer from "./appRedux/reducers";
+import createRootReducer from "./appRedux/reducers";
 import firebase from "./constants/firebase";
 import {createFirestoreInstance} from 'redux-firestore';
 import {Provider} from "react-redux";
+import {routerMiddleware} from "connected-react-router";
 
 const middlewares = [thunk.withExtraArgument({getFirebase}), createLogger];
 
-const store = createStore(RootReducer, {}, compose(applyMiddleware(...middlewares)));
+const store = createStore(createRootReducer, {}, compose(applyMiddleware(...middlewares)));
 
 const rrfProps = {
     firebase,
@@ -25,14 +26,12 @@ const rrfProps = {
 }
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <ReactReduxFirebaseProvider {...rrfProps}>
-                <Global/>
-                <App/>
-            </ReactReduxFirebaseProvider>
-        </Provider>
-    </React.StrictMode>,
+    <Provider store={store}>
+        <ReactReduxFirebaseProvider {...rrfProps}>
+            <Global/>
+            <App/>
+        </ReactReduxFirebaseProvider>
+    </Provider>,
     document.getElementById('root')
 );
 

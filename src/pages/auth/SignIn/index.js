@@ -39,7 +39,7 @@ const SignInPage = (props) => {
 
     return (
         <Container>
-            <ContainerItem full column center>
+            <ContainerItem width={"320px"} full column center>
                 <Header mb="20px">Login to your account</Header>
                 <Input placeholder={"Username"} type="text" onChange={handleOnChangeEmail} />
                 <Input placeholder={"First Name"} type="text" onChange={handleOnChangeName} />

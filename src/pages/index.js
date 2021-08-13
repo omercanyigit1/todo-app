@@ -1,24 +1,18 @@
 import React from "react";
-import asyncComponent from "./../utils/asyncComponent";
 import {Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
+import HomePage from "./Home";
+import SignInPage from "./auth/SignIn";
 
 const Pages = (props) => {
-    const {auth, firebase} = props;
 
     return (
         <Switch>
-            <Route path={`/`} exact component={asyncComponent(() => import('./Home'))}/>
-            <Route path={`/signin`} component={asyncComponent(() => import('./auth/SignIn'))} />
+            <Route path={`/`} exact component={HomePage}/>
+            <Route path={`/signin`} component={SignInPage} />
         </Switch>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        //auth: state.firebase.auth,
-        firebase: state.firebase
-    }
-}
 
-export default connect(mapStateToProps, {})(Pages);
+export default Pages;

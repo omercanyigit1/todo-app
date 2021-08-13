@@ -10,4 +10,14 @@ export const Header = styled.h1 `
     text-align: left;
     color: #171725;
     ${space}
+    text-align: center;
+`;
+
+export const TextError = styled.p `
+    color: #FF4545;
+`;
+
+export const TextPurple = styled.p `
+    color: #7000FF;
+    text-align: center;
 `;

@@ -25,3 +25,20 @@ export const Button = styled.button`
     border: 2px solid #7000FF;
   `}
 `;
+
+export const ButtonIcon = styled.button`
+    background: #92929D;
+    border-radius: 100%;
+    color: #fff;
+    padding: 11px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 8px;
+    border: none;
+    margin-bottom: 15px;
+    margin-left: 15px;
+`;

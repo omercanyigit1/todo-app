@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { width, space } from 'styled-system'
 
 export const Container = styled.div `
     
@@ -6,9 +7,10 @@ export const Container = styled.div `
 
 export const ContainerItem = styled.div `
     display: flex;
-    width: 320px;
+    ${width}
+    ${space}
     margin: 0 auto;
-    
+    , width
     ${props => props.full && css`
     height: 100vh;
     `}
